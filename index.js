@@ -4,6 +4,13 @@ require("express-async-errors");
 const express = require("express");
 const app = express();
 const fileUpload = require("express-fileupload");
+//cloudinary
+const cloudinary = require("cloudinary");
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 const productRouter = require("./routers/Products.router");
 
