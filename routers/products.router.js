@@ -17,6 +17,6 @@ productRouter
   .patch(updateProduct)
   .delete(deleteProduct);
 
-productRouter.route("/upload").post(uploadProductImage);
+productRouter.route("/uploads").post(uploadProductImage);
 
 module.exports = productRouter;
