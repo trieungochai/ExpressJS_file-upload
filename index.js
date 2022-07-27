@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const fileUpload = require("express-fileupload");
 //cloudinary
-const cloudinary = require("cloudinary");
+const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
@@ -23,7 +23,7 @@ const notFoundMiddleware = require("./middleware/not-found.middleware");
 
 app.use(express.static("./public"));
 app.use(express.json());
-app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true }));
 
 // routes
 app.get("/", (req, res) => {
