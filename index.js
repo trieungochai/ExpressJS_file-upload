@@ -3,6 +3,7 @@ require("express-async-errors");
 
 const express = require("express");
 const app = express();
+const productRouter = require("./routers/Products.router");
 
 // database
 const connectDB = require("./db/connect");
@@ -11,10 +12,14 @@ const connectDB = require("./db/connect");
 const errorHandlerMiddleware = require("./middleware/error-handler.middleware");
 const notFoundMiddleware = require("./middleware/not-found.middleware");
 
+app.use(express.json());
+
 // routes
 app.get("/", (req, res) => {
   return res.send("<h1>File Upload Starter</h1>");
 });
+
+app.use("/api/v1/products", productRouter);
 
 // middleware
 app.use(notFoundMiddleware);
